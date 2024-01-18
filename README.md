@@ -30,4 +30,7 @@ const props = defineProps({
   })
 ```  
 
-> 
+> In order for a prop to be REACTIVE it needs to be wrapped in a ref. ```import { ref } from 'vue'```.
+Note than when using ref variable returns will come wraped in a value object.
+
+> The computed property can create REACTIVE values that rely on logic to determine their state.
