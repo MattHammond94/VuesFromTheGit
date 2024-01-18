@@ -3,7 +3,7 @@
   <div class="container">
     <Balance />
     <IncomeExpenses />
-    <TransactionList />
+    <TransactionList :transactions="transactions" />
     <AddTransaction />
   </div>
 </template>
@@ -15,6 +15,16 @@
   import IncomeExpenses from './components/IncomeExpenses.vue'
   import TransactionList from './components/TransactionList.vue'
   import AddTransaction from './components/AddTransaction.vue'
+
+  import { ref } from 'vue';
+
+  const transactions = ref([
+    { id: 1, text: 'Candy', amount: -112.10 },
+    { id: 2, text: 'Refund', amount: 299.97 },
+    { id: 3, text: 'Mbappe fund', amount: -25.25 },
+    { id: 4, text: 'Cabbages', amount: -3.22 },
+    { id: 5, text: 'Paycheck', amount: 500 }
+  ]);
 
   // export default {
   //   components: {
