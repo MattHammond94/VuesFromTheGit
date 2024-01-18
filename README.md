@@ -15,3 +15,7 @@
 * The logic (or functionality/Js): The functionality for this compoent - Usuall within a script tag.
 
 * The styling: The styling doesn't have to be within a style tag can be imported globally but when used within a style tag ```scoped``` can be applied to the tag to ensure the styles within component will only apply here.
+
+> Uses directives for common logic such as looping through data: ```v-for```
+
+> Uses double curly braces {{}}
