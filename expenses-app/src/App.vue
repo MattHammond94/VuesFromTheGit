@@ -1,10 +1,10 @@
 <template>
   <Header />
   <div class="container">
-    <Balance :total="total" />
+    <Balance :total="+total" />
     <IncomeExpenses :income="+income" :outgoings="+outgoings" />
     <TransactionList :transactions="transactions" />
-    <AddTransaction />
+    <AddTransaction @transactionSubmitted="handleTransactionSubmitted"/>
   </div>
 </template>
 
@@ -29,7 +29,7 @@
   const total = computed(() => {
     return transactions.value.reduce((acc, transaction) => {
       return acc + transaction.amount
-    }, 0);
+    }, 0).toFixed(2);
   });
 
   const income = computed(() => {
@@ -46,6 +46,17 @@
     }, 0).toFixed(2);
   });
 
+  const generateId = () => {
+    transactions.value.at(-1).id + 1
+  }
+
+  const handleTransactionSubmitted = (transactionData) => {
+    transactions.value.push({
+      id: generateId(),
+      text: transactionData.text,
+      amount: transactionData.amount
+    })
+  }
 
   // export default {
   //   components: {
