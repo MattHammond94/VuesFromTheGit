@@ -5,7 +5,7 @@
       <p id="money-plus" class="money plus">+£{{ income }}</p>
     </div>
     <div>
-      <h4>Expense</h4>
+      <h4>Outgoings</h4>
       <p id="money-minus" class="money minus">-£{{ outgoings }}</p>
     </div>
   </div>

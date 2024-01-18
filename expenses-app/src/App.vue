@@ -1,8 +1,8 @@
 <template>
   <Header />
   <div class="container">
-    <Balance :total="total"/>
-    <IncomeExpenses :income="income" :outgoings="outgoings" />
+    <Balance :total="total" />
+    <IncomeExpenses :income="+income" :outgoings="+outgoings" />
     <TransactionList :transactions="transactions" />
     <AddTransaction />
   </div>
@@ -36,13 +36,13 @@
     return transactions.value.filter((transaction) => transaction.amount > 0)
     .reduce((acc, transaction) => {
       return acc + transaction.amount
-    }, 0);
+    }, 0).toFixed(2);
   });
 
   const outgoings = computed(() => {
     return transactions.value.filter((transaction) => transaction.amount < 0)
     .reduce((acc, transaction) => {
-      return Math.abs(acc + transaction.amount)
+      return acc + transaction.amount
     }, 0).toFixed(2);
   });
 
