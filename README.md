@@ -16,9 +16,11 @@
 
 * The styling: The styling doesn't have to be within a style tag can be imported globally but when used within a style tag ```scoped``` can be applied to the tag to ensure the styles within component will only apply here.
 
-> VUE unlike REACT is only going to execute the logic once on its initial render.
+> VUE unlike REACT is only going to execute the logic once on its initial render. Unlike REACT, VUE allows you to OPT-IN to using reactivity whereas REACT will always trigger a re-render when a mutation takes place unless specified otherwise (By using a useMemo)
 
 > Vue handles component lifecycles differently to react.
+
+> Vue uses 'Mutated based reaction/reactivity' - To trigger a re-render in Vue we don't call a function like we would in react such as ```setCount```. Instead Vue relies on the reassigning of state for a certain value. Any templates that use the mutated value will be re-rendered. 
 
 > The only way to make a change/re-render is by 'opting' elements in to reactivity. 
 
@@ -48,6 +50,8 @@ IMPORTANT NOTE: when using ```ref``` variable returns will come wraped in a valu
 > Forms: Inline with the form element adding ```@submit.prevent="onSubmit"``` is the same as referencing an onSubmit function in react. the ```.prevent``` is the same as e => e.preventDefault(). 
 
 > Form directives: can use ```v-model``` on input elements in forms to reference those input values.
+
+> Other directives: ```v-if``` => ```<p v-if="likes > 0">``` (Render me if) ```v-else``` => (Render me else)
 
 > Buttons: buttons use a ```@click``` which behaves like onClick in React. ```@click="deleteTransaction(transaction.id)"```
 
