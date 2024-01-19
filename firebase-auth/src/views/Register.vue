@@ -1,0 +1,3 @@
+<template>
+  Registration page
+</template>

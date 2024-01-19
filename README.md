@@ -6,6 +6,8 @@
 
 > ```npx create-vue@latest``` - Then select requirements at setup stage. On creation run an rpm install. 
 
+> If opting out of router requirements can use ```npm install vue-router@4``` to add routing. 
+
 ### How does Vue differ to react? 
 
 > Conventions: Vue will conventionally break each component down into 3 different sections: 
