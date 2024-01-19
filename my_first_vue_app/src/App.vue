@@ -1,47 +1,34 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="container">
+    <Home />
+  </div>
+  {{ new Date().toUTCString() }}
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <div>
+    You clicked {{ count }} times
+  </div>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <button @click="onClick">Click me</button>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup>
+  import Home from './components/Home.vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  import { computed, ref, watchEffect } from 'vue';
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  const count = ref(0);
+
+  const onClick = () => {
+    count.value = count.value + 1;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+  console.log('A Vue log');
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+  const double = computed(() => {
+    count.value * 2
+  });
+
+  watchEffect(() => {
+    console.log(`You clicked ${count.value} times`)
+  });
+</script>
