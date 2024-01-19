@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { getAuth } from "firebase/auth";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -6,8 +7,26 @@ const router = createRouter({
     { path: "/", component: () => import("../views/Home.vue") },
     { path: "/register", component: () => import("../views/Register.vue") },
     { path: "/sign-in", component: () => import("../views/SignIn.vue") },
-    { path: "/feed", component: () => import("../views/Feed.vue") }
+    { path: "/feed", 
+      component: () => import("../views/Feed.vue"),
+      meta: {
+        requiresAuth: true,
+      },
+    },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (getAuth().currentUser) {
+      next();
+    } else {
+      alert("You must be logged in to view this page");
+      next("/");
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
